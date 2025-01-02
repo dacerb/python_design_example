@@ -1,7 +1,11 @@
+import json
+from typing import Optional, Dict
+
 from example_compliance_engine.compliance_engine import validator
 
 if __name__ == "__main__":
     print("Example Compliance Engine")
+
     Payload = {
         "username": "test_user",
         "password": "test_passwrod",
@@ -19,4 +23,6 @@ if __name__ == "__main__":
             }
         }
     }
-    validator.handler(request=Payload)
+
+    summary: Optional[Dict] = validator.handler(request=Payload)
+    print(json.dumps(summary, indent=4))

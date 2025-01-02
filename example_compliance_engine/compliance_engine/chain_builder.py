@@ -1,12 +1,12 @@
 
 from dataclasses import dataclass
-from validator.compliance_handler import (
-    UsernameHandler,
-    PasswordHandler,
-    ItContactHandler,
-    VulnerabilityCritical,
+from .validations import (
     VulnerabilityLow,
-    VulnerabilityHigh
+    VulnerabilityHigh,
+    VulnerabilityCritical,
+    ItContactHandler,
+    PasswordHandler,
+    UsernameHandler
 )
 
 @dataclass

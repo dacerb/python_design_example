@@ -2,11 +2,12 @@ import json
 from typing import Optional, Dict
 
 from example_compliance_engine.compliance_engine import validator
+from example_compliance_engine.compliance_engine.evaluate_compliance import check_compliance
 
 if __name__ == "__main__":
     print("Example Compliance Engine")
 
-    Payload = {
+    Payload_no_compliance = {
         "username": "test_user",
         "password": "test_passwrod",
         "it_contact": "it_contact",
@@ -24,5 +25,27 @@ if __name__ == "__main__":
         }
     }
 
-    summary: Optional[Dict] = validator.handler(request=Payload)
-    print(json.dumps(summary, indent=4))
+    Payload_compliance = {
+        "username": "test_user",
+        "password": "test_passwrod",
+        "it_contact": "it_contact",
+        "vulnerabilidades": {
+            "high": {
+            },
+            "critical": {
+            },
+            "low": {
+            }
+        }
+    }
+
+    exception_app = {"chess"}
+
+    summary: Optional[Dict] = validator.handler(request=Payload_no_compliance)
+    print(f"""
+    {"-"*100}
+    COMPLIANCE: {check_compliance(summary=summary)}
+    PAYLOAD: 
+    {json.dumps(summary, indent=10)}
+    {"-" * 100}
+    """)

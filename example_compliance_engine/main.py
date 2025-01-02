@@ -48,9 +48,9 @@ if __name__ == "__main__":
         "vulnerabilidades": {
             "high": {
                 "chess": "1",
-                #"pokemon": 10,
+                "pokemon": 10,
                 "office": 13,
-                # "kmspico": "x23"
+                "kmspico": "x23"
             },
             "critical": {
             },

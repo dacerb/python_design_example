@@ -7,7 +7,7 @@ from example_compliance_engine.compliance_engine.evaluate_compliance import chec
 if __name__ == "__main__":
     print("Example Compliance Engine")
 
-    Payload_no_compliance = {
+    payload_no_compliance = {
         "username": "test_user",
         "password": "test_passwrod",
         "it_contact": "it_contact",
@@ -25,7 +25,42 @@ if __name__ == "__main__":
         }
     }
 
-    Payload_compliance = {
+    payload_compliance_one_vulnerability_critical = {
+        "username": "test_user",
+        "password": "test_passwrod",
+        "it_contact": "it_contact",
+        "vulnerabilidades": {
+            "high": {
+                "chess": "1"
+            },
+            "critical": {
+            },
+            "low": {
+            }
+        },
+        "exceptions_app_rule": {"high": {"chess": {"version": 1}}}
+    }
+
+    payload_compliance_four_vulnerability_critical = {
+        "username": "test_user",
+        "password": "test_passwrod",
+        "it_contact": "it_contact",
+        "vulnerabilidades": {
+            "high": {
+                "chess": "1",
+                #"pokemon": 10,
+                "office": 13,
+                # "kmspico": "x23"
+            },
+            "critical": {
+            },
+            "low": {
+            }
+        },
+        "exceptions_app_rule": {"high": {"chess": {"version": 1}, "office": {"version": 100}}}
+    }
+
+    payload_compliance = {
         "username": "test_user",
         "password": "test_passwrod",
         "it_contact": "it_contact",
@@ -39,13 +74,11 @@ if __name__ == "__main__":
         }
     }
 
-    exception_app = {"chess"}
-
-    summary: Optional[Dict] = validator.handler(request=Payload_no_compliance)
+    summary: Optional[Dict] = validator.handler(request=payload_compliance_four_vulnerability_critical)
     print(f"""
     {"-"*100}
     COMPLIANCE: {check_compliance(summary=summary)}
-    PAYLOAD: 
+    PAYLOAD:
     {json.dumps(summary, indent=10)}
     {"-" * 100}
     """)

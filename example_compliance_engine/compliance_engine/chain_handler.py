@@ -29,3 +29,4 @@ class HandlerSummaryProtocol(ABC):
 class HandlerSummaryVulnerabilityProtocol(HandlerSummaryProtocol):
     qty: int
     vulnerability_list: list = []
+    excepted_vulnerability: dict = {}

@@ -76,9 +76,7 @@ if __name__ == "__main__":
 
     summary: Optional[Dict] = validator.handler(request=payload_compliance_four_vulnerability_critical)
     print(f"""
-    {"-"*100}
-    COMPLIANCE: {check_compliance(summary=summary)}
-    PAYLOAD:
     {json.dumps(summary, indent=10)}
     {"-" * 100}
+    COMPLIANCE: {check_compliance(summary=summary)}
     """)
